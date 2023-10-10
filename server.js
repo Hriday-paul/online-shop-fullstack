@@ -13,7 +13,7 @@ connectDb();
 
 //rest object
 const app = express();
-
+app.use(express.static("public"))
 //middlewares
 app.use(morgan("dev"));
 app.use(express.json());
