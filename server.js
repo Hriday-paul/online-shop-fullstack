@@ -21,7 +21,7 @@ app.use(cors());
 
 //routes
 //user routes
-app.use(require("./routs/rout"));
+app.use("/api",require("./routs/rout"));
 
 //static files
 app.use(express.static(path.join(__dirname, "./client/dist")));
