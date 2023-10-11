@@ -19,9 +19,10 @@ const postData = async (req, res) => {
         price : req.body.price,
         discount : req.body.discount,
     })
-    await newProduct.save();
+    //await newProduct.save();
     //res.json({ add: "post success" })
-    await res.send(newProduct);
+    await console.log(newProduct)
+    await res.json(newProduct);
 }
 
 const demoControler = async(req, res)=>{
