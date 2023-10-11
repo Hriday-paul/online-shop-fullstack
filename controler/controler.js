@@ -21,7 +21,7 @@ const postData = async (req, res) => {
     })
     // await newProduct.save();
     // res.json({ add: "post success" })
-    console.log(newProduct)
+    res.send(newProduct);
 }
 
 const demoControler = async(req, res)=>{
