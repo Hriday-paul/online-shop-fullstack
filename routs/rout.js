@@ -3,7 +3,9 @@ const { getData, postData } = require("../controler/controler");
 const router = express.Router();
 const multer = require('multer');
 const path = require("path");
-
+var bodyParser = require('body-parser')
+router.use(bodyParser.urlencoded({ extended: true }))
+router.use(bodyParser.json());
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
