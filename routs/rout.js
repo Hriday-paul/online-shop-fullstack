@@ -1,5 +1,5 @@
 const express = require("express");
-const { getData, postData } = require("../controler/controler");
+const { getData, postData, demoControler } = require("../controler/controler");
 const router = express.Router();
 const multer = require('multer');
 const path = require("path");
@@ -25,5 +25,7 @@ const upload = multer({
 router.get("/getApidata", getData);
 
 router.post("/postData", upload.single('imageFile'), postData);
+
+router.post("/demoPost", demoControler)
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const productModel = require("../model/productModel")
+const demoModel = require("../model/demoModel")
 const { v4: uuidv4 } = require('uuid');
 
 const getData = async (req, res) => {
@@ -23,8 +24,13 @@ const postData = async (req, res) => {
     console.log(newProduct)
 }
 
+const demoControler = async(req, res)=>{
+    res.send(req.body)
+}
+
 
 module.exports = {
     getData,
-    postData
+    postData,
+    demoControler
 }
