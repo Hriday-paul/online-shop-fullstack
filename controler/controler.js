@@ -11,7 +11,7 @@ const postData = async (req, res) => {
     const newProduct = await productModel({
         id : uuidv4(),
         product_name: req.body.productName,
-        image: req.file.filename,
+        image : req.file.filename,
         product_model : req.body.productModel,
         brand : req.body.brand,
         stock : req.body.stock,
@@ -19,13 +19,14 @@ const postData = async (req, res) => {
         price : req.body.price,
         discount : req.body.discount,
     })
-    // await newProduct.save();
-    // res.json({ add: "post success" })
+    await newProduct.save();
+    //res.json({ add: "post success" })
     await res.send(newProduct);
 }
 
 const demoControler = async(req, res)=>{
-    res.send(req.body)
+    console.log(req.body)
+    res.send("uploaded")
 }
 
 
