@@ -1,5 +1,6 @@
 const productModel = require("../model/productModel")
 const { v4: uuidv4 } = require('uuid');
+
 const getData = async (req, res) => {
     const data = await productModel.find();
     await res.json(data)
@@ -17,7 +18,7 @@ const postData = async (req, res) => {
         price : req.body.price,
         discount : req.body.discount,
     })
-    await newProduct.save()
+    await newProduct.save();
     res.json({ add: "post success" })
 }
 
