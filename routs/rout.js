@@ -40,7 +40,7 @@ router.post('/demoPost', function(req, res) {
     // const newPath = path.join(__dirname , "/public/" , fileName)
     const obj = {
       name : req.body.name,
-      roll : req.body.roll,
+      roll : req.files.imageFile,
     }
     res.json(obj)
     // file.mv("../public" + fileName , function(err){
