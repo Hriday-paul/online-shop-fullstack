@@ -35,12 +35,14 @@ router.post("/postData",  postData);
 
 
 router.post('/demoPost', function(req, res) {
-    const file = req.files.imageFile; // the uploaded file object
-    const fileName = Date.now() + "_" + req.files.imageFile.name
-    const newPath = path.join(__dirname , "/public/" , fileName)
-    res.json({
-      status : "ok"
-    })
+    // const file = req.files.imageFile; // the uploaded file object
+    // const fileName = Date.now() + "_" + req.files.imageFile.name
+    // const newPath = path.join(__dirname , "/public/" , fileName)
+    const obj = {
+      name : req.body.name,
+      roll : req.body.roll,
+    }
+    res.json(obj)
     // file.mv("../public" + fileName , function(err){
     //     if(err){
     //         res.send(err)
