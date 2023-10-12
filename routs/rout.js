@@ -1,31 +1,52 @@
 const express = require("express");
-const { getData, postData, demoControler } = require("../controler/controler");
+const { getData, postData } = require("../controler/controler");
 const router = express.Router();
-const multer = require('multer');
+//const multer = require('multer');
 const path = require("path");
 var bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(bodyParser.json());
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/images')
-    },
-    filename: function (req, file, cb) {
-        const name = file.fieldname + "_" + Date.now() + path.extname(file.originalname)
-        cb(null, name)
-    }
-})
 
-const upload = multer({
-    storage: storage
-})
+
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, 'public/images')
+//     },
+//     filename: function (req, file, cb) {
+//         const name = file.fieldname + "_" + Date.now() + path.extname(file.originalname)
+//         cb(null, name)
+//     }
+// })
+
+// const upload = multer({
+//     storage: storage
+// })
+
+
 
 
 router.get("/getApidata", getData);
 
-router.post("/postData", upload.single('imageFile'), postData);
+//upload.single('imageFile'),
+router.post("/postData",  postData);
 
-router.post("/demoPost", demoControler)
+
+
+router.post('/demoPost', function(req, res) {
+    const file = req.files.imageFile; // the uploaded file object
+    const fileName = Date.now() + "_" + req.files.imageFile.name
+    const newPath = path.join(__dirname , "/public/" , fileName)
+    res.send(file)
+    // file.mv("../public" + fileName , function(err){
+    //     if(err){
+    //         res.send(err)
+    //     }
+    //     else{
+    //         res.send("upload done")
+    //     }
+    // })
+  });
+
 
 module.exports = router;

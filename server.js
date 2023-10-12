@@ -19,6 +19,14 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
+const fileUpload = require("express-fileupload")
+app.use(fileUpload({
+  useTempFiles : true,
+  tempFileDir : 'public/'
+}));
+
+
+
 //routes
 //user routes
 app.use("/api",require("./routs/rout"));

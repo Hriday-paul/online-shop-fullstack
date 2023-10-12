@@ -7,9 +7,9 @@ const demoSchema = Schema(
       type: String,
       required: true,
     },
-    roll: {
-      type: Number,
-      required: true,
+    photo: {
+      data: Buffer,
+      contentType: String,
     },
   }
 );

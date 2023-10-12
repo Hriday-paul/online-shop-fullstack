@@ -21,13 +21,12 @@ const postData = async (req, res) => {
     })
     //await newProduct.save();
     //res.json({ add: "post success" })
-    await console.log(newProduct)
+    //await console.log(newProduct)
     await res.json(newProduct);
 }
 
 const demoControler = async(req, res)=>{
-    console.log(req.body)
-    res.send("uploaded")
+    res.send(req.body)
 }
 
 
