@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const colors = require("colors");
 const path = require("path");
 const connectDb = require("./config/connectDb");
+const fileUpload = require("express-fileupload")
 // config dot env file
 dotenv.config();
 
@@ -19,11 +20,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
-const fileUpload = require("express-fileupload")
-app.use(fileUpload({
-  useTempFiles : true,
-  tempFileDir : 'public/'
-}));
+app.use(fileUpload());
 
 
 
@@ -32,11 +29,11 @@ app.use(fileUpload({
 app.use("/api",require("./routs/rout"));
 
 //static files
-app.use(express.static(path.join(__dirname, "./client/dist")));
+// app.use(express.static(path.join(__dirname, "./client/dist")));
 
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/dist/index.html"));
-});
+// app.get("*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "./client/dist/index.html"));
+// });
 
 //port
 const PORT = 8000 || process.env.PORT;
