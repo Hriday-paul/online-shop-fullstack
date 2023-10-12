@@ -4,8 +4,9 @@ const router = express.Router();
 //const multer = require('multer');
 const path = require("path");
 var bodyParser = require('body-parser')
-router.use(bodyParser.urlencoded({ extended: true }))
-router.use(bodyParser.json());
+
+router.use(bodyParser.json({limit: '50mb'}));
+router.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 
 
 
