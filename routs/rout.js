@@ -4,7 +4,7 @@ const router = express.Router();
 //const multer = require('multer');
 const path = require("path");
 var bodyParser = require('body-parser')
-
+//const fs = require("fs");
 router.use(bodyParser.json({limit: '50mb'}));
 router.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 
@@ -42,7 +42,18 @@ router.post('/demoPost', async function(req, res) {
     //   name : req.body.name,
     //   image : "",
     // }
-    res.json(req.files);
+
+
+    const file = req.files.imageFile;
+    const fileName = Date.now() + "_" + file.name ;
+    const prevPath = path.join(__dirname, "..") 
+    const newPath = prevPath + "/public/images/" + fileName;
+  
+    await file.mv(newPath, (err)=>{
+      if(err){
+        res.send(err)
+      }else{res.json({status : fileName})}
+    })
     //await res.json(obj)
     // file.mv("../public" + fileName , function(err){
     //     if(err){
