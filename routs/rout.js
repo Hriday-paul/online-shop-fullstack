@@ -38,7 +38,9 @@ router.post('/demoPost', function(req, res) {
     const file = req.files.imageFile; // the uploaded file object
     const fileName = Date.now() + "_" + req.files.imageFile.name
     const newPath = path.join(__dirname , "/public/" , fileName)
-    res.send(file)
+    res.json({
+      status : "ok"
+    })
     // file.mv("../public" + fileName , function(err){
     //     if(err){
     //         res.send(err)
