@@ -7,6 +7,10 @@ const productSchema = Schema(
       type: String,
       required: true,
     },
+    category : {
+      type: String,
+      required: true,
+    },
     product_name: {
       type: String,
       required: true,
@@ -20,8 +24,8 @@ const productSchema = Schema(
       required: true,
     },
     image: {
-      type: String,
-      required: true,
+      data: Buffer,
+      contentType: String,
     },
     stock: {
       type: Number,
@@ -37,6 +41,10 @@ const productSchema = Schema(
     },
     discount: {
       type: Number,
+      required: true,
+    },
+    createdAt : {
+      type: String,
       required: true,
     }
   }

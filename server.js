@@ -20,11 +20,12 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
-app.use(fileUpload({
-  useTempFiles : true,
-  tempFileDir : 'public/'
-}));
+// app.use(fileUpload({
+//   useTempFiles : true,
+//   tempFileDir : 'public/'
+// }));
 
+app.use(fileUpload());
 
 
 //routes
